@@ -11,7 +11,6 @@ import org.jsoup.nodes.Element;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
@@ -30,7 +29,6 @@ public class Main {
 
         // Create new index
         client.execute(new CreateIndex.Builder("amazon_price").build());
-
 
         // Run task every 10 minutes
         scheduler.scheduleAtFixedRate(new Runnable() {
@@ -52,7 +50,8 @@ public class Main {
                     Product product = new Product(price, System.currentTimeMillis());
 
                     // Log
-                    System.out.println("Update: " + price);
+                    System.out.println("Update: " + product.price);
+                    System.out.println("Time: " + product.timestamp);
 
                     // Send to AWS
                     Index index = new Index.Builder(product).index("amazon_price").type("item").build();
@@ -61,7 +60,7 @@ public class Main {
                 } catch (Exception e) {
                 }
             }
-        }, 0, 10, TimeUnit.SECONDS);
+        }, 0, 10, TimeUnit.MINUTES);
     }
 
     static class Product {
