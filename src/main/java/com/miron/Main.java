@@ -37,7 +37,7 @@ public class Main {
                 try {
                     // Load URL
                     Document document =
-                            Jsoup.connect("https://www.amazon.com/NVIDIA-GEFORCE-GTX-1080-Founders/dp/B01GATSH9U/ref=sr_1_5?s=pc&ie=UTF8&qid=1489554837&sr=1-5&keywords=gtx+1080")
+                            Jsoup.connect("https://www.amazon.com/EVGA-GeForce-Support-Graphics-08G-P4-6286-KR/dp/B01GAI64GO/ref=sr_1_2?s=electronics&ie=UTF8&qid=1489646227&sr=1-2&keywords=gtx+1080")
                                     .timeout(30000).userAgent("Mozilla/17.0").get();
 
                     // Get price
